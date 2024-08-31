@@ -33,13 +33,23 @@ This repository contains the frontend implementation for the GGI project, built 
    cd GGI-FrontEnd-Repository
 
 
-![image](https://github.com/user-attachments/assets/4aec8a1a-6664-42ac-9018-4086d643ad63)
+## Screenshots
 
-![image](https://github.com/user-attachments/assets/72b39ecc-db9a-4c6b-98ca-bf70f0673a6d)
+Here are some screenshots of the application:
 
-![image](https://github.com/user-attachments/assets/08d8d3c9-de29-4874-8858-d1399b2bc603)
+### Header Component
 
-![image](https://github.com/user-attachments/assets/ca6c13eb-ae42-40c3-bb26-b715320d2386)
+![Header](./images/image1.png)
 
+### Data List Component
 
+![Data List](./images/image2.png)
+
+### Form Component
+
+![Form](./images/image3.png)
+
+### App Flow
+
+![App Flow](./images/image4.png)
    
