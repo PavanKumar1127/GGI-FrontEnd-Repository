@@ -39,7 +39,8 @@ Here are some screenshots of the application:
 
 ### Header Component
 
-![Header](https://github.com/PavanKumar1127/GGI-FrontEnd-Repository/blob/master/src/images/image1.png)
+[![Header](https://github.com/PavanKumar1127/GGI-FrontEnd-Repository/blob/master/src/images/image1.png)
+](https://github.com/PavanKumar1127/GGI-FrontEnd-Repository/blob/master/src/images/image1.png)
 
 ### Data List Component
 
