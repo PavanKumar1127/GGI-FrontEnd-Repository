@@ -1,70 +1,80 @@
+// src/components/Form.js
+
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { TextField, Button } from '@mui/material';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
+import { TextField, Button } from '@mui/material';
 
 const validationSchema = Yup.object({
-    name: Yup.string().required('Name is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    description: Yup.string().required('Description is required'),
+  name: Yup.string().required('Name is required'),
+  email: Yup.string().email('Invalid email address').required('Email is required'),
+  description: Yup.string().required('Description is required')
 });
 
-const FormComponent = () => {
-    const handleSubmit = (values, { resetForm }) => {
-        fetch('http://localhost:8080/api/data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(values),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Data submitted:', data);
-            resetForm();
-        })
-        .catch(error => console.error('Error submitting data:', error));
-    };
+const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      description: ''
+    },
+    validationSchema,
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post('http://localhost:8080/api/data', values);
+        console.log('Data saved successfully:', response.data);
+        // Optionally reset the form
+        formik.resetForm();
+      } catch (error) {
+        console.error('Error saving data:', error);
+      }
+    }
+  });
 
-    return (
-        <Formik
-            initialValues={{ name: '', email: '', description: '' }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-        >
-            {({ isSubmitting }) => (
-                <Form>
-                    <Field
-                        as={TextField}
-                        name="name"
-                        label="Name"
-                        fullWidth
-                        margin="normal"
-                        helperText={<ErrorMessage name="name" />}
-                    />
-                    <Field
-                        as={TextField}
-                        name="email"
-                        label="Email"
-                        fullWidth
-                        margin="normal"
-                        helperText={<ErrorMessage name="email" />}
-                    />
-                    <Field
-                        as={TextField}
-                        name="description"
-                        label="Description"
-                        fullWidth
-                        margin="normal"
-                        helperText={<ErrorMessage name="description" />}
-                    />
-                    <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
-                        Submit
-                    </Button>
-                </Form>
-            )}
-        </Formik>
-    );
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <TextField
+        name="name"
+        label="Name"
+        variant="outlined"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.name}
+        error={formik.touched.name && Boolean(formik.errors.name)}
+        helperText={formik.touched.name && formik.errors.name}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        name="email"
+        label="Email"
+        variant="outlined"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.email}
+        error={formik.touched.email && Boolean(formik.errors.email)}
+        helperText={formik.touched.email && formik.errors.email}
+        fullWidth
+        margin="normal"
+      />
+      <TextField
+        name="description"
+        label="Description"
+        variant="outlined"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.description}
+        error={formik.touched.description && Boolean(formik.errors.description)}
+        helperText={formik.touched.description && formik.errors.description}
+        fullWidth
+        margin="normal"
+      />
+      <Button type="submit" variant="contained" color="primary">
+        Submit
+      </Button>
+    </form>
+  );
 };
 
-export default FormComponent;
+export default Form;
