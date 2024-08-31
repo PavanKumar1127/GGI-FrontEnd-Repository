@@ -39,11 +39,11 @@ Here are some screenshots of the application:
 
 ### Header Component
 
-![image](https://github.com/user-attachments/assets/852c325b-75e2-426a-873d-8bd33831062b)
+![image](images/image1.png)
 
 ### Data List Component
 
-![Data List](./images/image2.png)
+![Data List](images/image2.png)
 
 ### Form Component
 
