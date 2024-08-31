@@ -52,4 +52,3 @@ Here are some screenshots of the application:
 ### App Flow
 
 ![App Flow](./images/image4.png)
-   
