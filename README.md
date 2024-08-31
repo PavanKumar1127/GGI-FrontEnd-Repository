@@ -39,7 +39,7 @@ Here are some screenshots of the application:
 
 ### Header Component
 
-![Header](./images/image1.png)
+![image](https://github.com/user-attachments/assets/852c325b-75e2-426a-873d-8bd33831062b)
 
 ### Data List Component
 
@@ -52,4 +52,3 @@ Here are some screenshots of the application:
 ### App Flow
 
 ![App Flow](./images/image4.png)
-   
